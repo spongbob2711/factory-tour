@@ -1,0 +1,46 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  margin: 0%;
+  padding-top: 70px;
+}
+.navbar-container{
+  position: fixed;
+  display: flex;
+  top: 0px;
+  right: 0px;
+  left:0px;
+  height:70px;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section{
+  display: flex;
+  
+  justify-content: left;
+}
+.right-section{
+  display: flex;
+  justify-content: right;
+}
+.web-title,
+.navbar-home,
+.navbar-order{
+  color: white;
+
+}
+.navbar-order,
+.navbar-home{
+  margin-right: 20px;
+  
+}
+
+.date-input,
+.time-input,
+.name-input,
+.submit-button{
+  display: block;
+  margin-top: 10px;
+}
