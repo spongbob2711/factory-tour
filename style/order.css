@@ -3,6 +3,7 @@ body{
   position: relative;
   margin: 0%;
   padding-top: 70px;
+  background-color: greenyellow;
 }
 .navbar-container{
   position: fixed;
@@ -26,7 +27,7 @@ body{
   justify-content: right;
 }
 .web-title,
-.navbar-home,
+.navbar-home  ,
 .navbar-order{
   color: white;
 
@@ -36,11 +37,31 @@ body{
   margin-right: 20px;
   
 }
-
-.date-input,
-.time-input,
-.name-input,
-.submit-button{
-  display: block;
-  margin-top: 10px;
+.contact-container{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
 }
+.form-title{
+  font-weight: bold;
+}
+.form-title hr{
+  height: 5px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: black;
+  border: none;
+}
+.form-input{
+    width: 500px;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-weight: medium ;
+    border-radius: 50px;
+}
+
+
