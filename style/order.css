@@ -1,41 +1,109 @@
+:root {
+  --ff-raleway: "Raleway", sans-serif;
+  --border-black: black 2px solid;
+  --border-white: white 2px solid;
+  --border-green: green 2px solid;
+  --color-orange: hsl(23, 100%, 50%);
+
+  --ff-light: 200;
+  --ff-normal: 400;
+  --ff-semibold: 500;
+  --ff-bold: 600;
+
+  --fs-400: 0.9375rem;
+  --fs-900: 3rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.625rem;
+  --fs-800: 2.625rem;
+
+  --clr-neutral-900: hsl(234, 12%, 34%);
+  --clr-neutral-400: hsl(229, 6%, 66%);
+  --clr-neutral-100: hsl(0, 0%, 98%);
+}
+* {
+  font-family: var(--ff-raleway);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0%;
-  padding-top: 70px;
-  background-color: greenyellow;
+  margin-top: 70px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
 }
 .navbar-container {
+  z-index: 100;
   position: fixed;
   display: flex;
   top: 0px;
   right: 0px;
   left: 0px;
   height: 70px;
-  background-color: black;
+  background-color: white;
   justify-content: space-between;
   align-items: center;
 }
-
+.navbar-container > * {
+  color: hsl(23, 100%, 50%, 0.945);
+  font-weight: bold;
+  font-size: var(--fs-500);
+  position: relative;
+}
+.navbar-home,
+.navbar-order {
+  color: hsl(23, 100%, 50%, 0.945);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.navbar-home:hover,
+.navbar-order:hover {
+  color: green;
+}
 .left-section {
-  display: flex;
-
-  justify-content: left;
+  flex: 8;
+}
+.web-title {
+  margin: 3rem;
 }
 .right-section {
   display: flex;
-  justify-content: right;
+  justify-content: center;
+  /* border: white 2px solid; */
+  flex: 2;
 }
-.web-title,
-.navbar-right {
-  color: white;
+.right-section > * {
+  flex: 1;
+  /* border: white 2px solid; */
+  text-align: center;
 }
-.navbar-right {
-  margin-right: 20px;
+
+.navbar-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.05)
+  );
 }
 .order-container {
+  /* border: var(--border-green); */
   height: 100vh;
   display: flex;
-  align-items: center;
+  padding-top: 6vh;
   justify-content: space-evenly;
 }
 .form-left {

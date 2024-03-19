@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
               });
               successCallback(fullCalendarEvents);
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function (errorThrown) {
               failureCallback(errorThrown);
             },
           });
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .getEvents()
       .some((event) => event.startStr === date);
     if (isDuplicate) {
-      alert("An event already exists on this date.");
+      alert("Sudah ada acara pada tanggal tersebut.");
     } else {
       var eventData = {
         name: name,
