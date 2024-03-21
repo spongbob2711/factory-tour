@@ -16,7 +16,7 @@ $email->setSubject("Konfirmasi pemesanan acara Marimas Factory Tour");
 $email->addTo($emailAddress, $name);
 $email->addContent(
     "text/html",
-    "Hallo,<br><br>Terima kasih atas pemesanannya Bapak/Ibu $name. Anda telah melakukan pemesanan acara Marimas Factory Tour pada tanggal $date.<br><br>Terima Kasih atas pemesannanya,<br>Marimas Company"
+    "Hallo,<br><br>Terima kasih atas pemesanannya Bapak/Ibu $name. Anda telah melakukan pemesanan acara Marimas Factory Tour pada tanggal $date.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
 );
 // Create a new SendGrid instance
 $sendgrid = new \SendGrid(SENDGRID_API_KEY);

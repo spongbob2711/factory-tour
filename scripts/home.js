@@ -1,8 +1,8 @@
 //image slider/carousel
 var images = [
-  "../img/Factory-Tour383.png",
-  "../img/Factory-Tour297.png",
-  "../img/factory-outside-img.jpg",
+  "img/Factory-Tour383.png",
+  "img/Factory-Tour297.png",
+  "img/Factory-Tour330.png",
 ];
 
 var imageIndex = 0;
@@ -16,7 +16,7 @@ function changeImage(change) {
 
 setInterval(function () {
   changeImage(1);
-}, 5000);
+}, 4000);
 
 //scroll to top button
 let calcScrollValue = () => {
