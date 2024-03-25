@@ -3,11 +3,13 @@ require_once 'sendgrid_config.php';
 require 'vendor/autoload.php';
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['name'], $data['email'], $data['date'], $data['instansi'])) {
+if (isset($data['name'], $data['email'], $data['date'], $data['instansi'], $data['jumlah'])) {
     $name = $data['name'];
     $emailAddress = $data['email'];
     $date = $data['date'];
     $instansi = $data['instansi'];
+    $jumlah = $data['jumlah'];
+
 
     // Create a new email object
 $email = new \SendGrid\Mail\Mail();
@@ -16,7 +18,7 @@ $email->setSubject("Konfirmasi pemesanan acara Marimas Factory Tour");
 $email->addTo($emailAddress, $name);
 $email->addContent(
     "text/html",
-    "Hallo,<br><br>Terima kasih atas pemesanannya Bapak/Ibu $name. Anda telah melakukan pemesanan acara Marimas Factory Tour pada tanggal $date.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
+    "Halo,<br><br>Terima kasih atas pemesanannya Bapak/Ibu $name dari instansi $instansi. Anda telah melakukan pemesanan acara Marimas Factory Tour yang memiliki peserta berjumlah $jumlah orang pada tanggal $date.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
 );
 // Create a new SendGrid instance
 $sendgrid = new \SendGrid(SENDGRID_API_KEY);
@@ -34,7 +36,7 @@ $reminderEmail->setSubject("Pengingat pemesanan acara Marimas Factory Tour");
 $reminderEmail->addTo($emailAddress, $name);
 $reminderEmail->addContent(
     "text/html",
-    "Halo Bapak/Ibu $name,<br><br>Kami mengingatkan Anda bahwa acara Marimas Factory Tour yang anda pesan dilaksanakan pada tanggal $date.<br><br>Terima Kasih Atas Perhatiannya<br>Marimas Company"
+    "Hallo,<br><br>Halo Bapak/Ibu $name dari instansi $instansi. Kami mengingatkan Anda telah melakukan pemesanan pada tanggal $date dengan jumlah peserta $jumlah orang.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
 );
 $reminderEmail->setSendAt(strtotime($reminderDate));
 

@@ -103,7 +103,7 @@ body {
   /* border: var(--border-green); */
   width: 100%;
   display: flex;
-  padding-top: 6vh;
+  padding-top: 1vh;
   justify-content: space-evenly;
 }
 .form-left {
@@ -149,6 +149,7 @@ body {
   background-color: lightgrey;
 }
 .calendar-container {
+  margin-top: 2vh;
   width: 500px;
 }
 .fc-event .fc-event-title {

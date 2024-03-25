@@ -18,9 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
               // Convert the events data to the format expected by FullCalendar
               var fullCalendarEvents = events.map(function (eventData) {
                 return {
-                  title: eventData.name + "\n" + eventData.instansi,
-                  start: eventData.date,
+                  title:
+                    eventData.title + "\n" + eventData.extendedProps.instansi,
+                  start: eventData.start,
                   allDay: true,
+                  extendedProps: {
+                    jumlah: eventData.extendedProps.jumlah,
+                    email: eventData.extendedProps.email,
+                  },
                 };
               });
               successCallback(fullCalendarEvents);
@@ -40,21 +45,44 @@ document.addEventListener("DOMContentLoaded", function () {
     var email = document.getElementById("email").value;
     var date = document.getElementById("date").value;
     var instansi = document.getElementById("instansi").value;
+    var jumlah = document.getElementById("jumlah").value;
 
-    let isDuplicate = calendar
+    // Create Date objects for the selected date and today's date
+    var selectedDate = new Date(date);
+    var today = new Date();
+
+    // Set the time of both dates to 00:00:00 for a fair comparison
+    selectedDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    // Check if the selected date is today or before today
+    if (selectedDate <= today) {
+      alert("Tanggal harus setelah hari ini.");
+      return; // Stop the function here
+    }
+    let eventsOnSelectedDate = calendar
       .getEvents()
-      .some((event) => event.startStr === date);
-    if (isDuplicate) {
-      alert("Sudah ada acara pada tanggal tersebut.");
+      .filter((event) => event.startStr === date);
+    let totalJumlahOnSelectedDate = eventsOnSelectedDate.reduce(
+      (total, event) => total + Number(event.extendedProps.jumlah),
+      0
+    );
+    console.log("jumlah peserta hari itu " + totalJumlahOnSelectedDate);
+
+    if (totalJumlahOnSelectedDate + Number(jumlah) > 150) {
+      alert(
+        "Jumlah Seluruh Peserta sudah melebihi kapasitas. Silahkan pilih tanggal lain."
+      );
     } else {
       var eventData = {
         name: name,
         email: email,
         date: date,
         instansi: instansi,
+        jumlah: jumlah,
       };
       $.ajax({
-        url: "db_insert.php", // replace with your server-side script URL
+        url: "db_insert.php",
         method: "POST",
         data: eventData,
         success: function (response) {
@@ -67,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("email").value = "";
           document.getElementById("date").value = "";
           document.getElementById("instansi").value = "";
+          document.getElementById("jumlah").value = "";
         },
       });
       // AJAX call to SendGrid PHP file
