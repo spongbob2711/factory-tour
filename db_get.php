@@ -19,16 +19,16 @@ $events = array();
 
 if ($result->num_rows > 0) {
   // Output data of each row
-  while($row = $result->fetch_assoc()) {
-    $event = array(
-      'title' => $row['name'],
-      'start' => $row['date'],
-      'extendedProps' => array(
-        'jumlah' => $row['jumlah'],
-        'email' => $row['email'],
-        'instansi' => $row['instansi'],
-      ),
-    );
+    while($row = $result->fetch_assoc()) {
+      $event = array(
+        'title' => $row['name'],
+        'start' => $row['date'],
+        'extendedProps' => array(
+          'jumlah' => $row['jumlah'],
+          'email' => $row['email'],
+          'instansi' => $row['instansi'],
+        ),
+      );
     $events[] = $event;
   }
 } else {
