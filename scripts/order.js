@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
                   start: eventData.start,
                   allDay: true,
                   extendedProps: {
+                    nama: eventData.title,
                     jumlah: eventData.extendedProps.jumlah,
                     email: eventData.extendedProps.email,
+                    instansi: eventData.extendedProps.instansi,
                   },
                 };
               });
@@ -68,10 +70,21 @@ document.addEventListener("DOMContentLoaded", function () {
       0
     );
     console.log("jumlah peserta hari itu " + totalJumlahOnSelectedDate);
-
+    let eventsama = calendar.getEvents();
+    var cekeventsama = eventsama.find(function (event) {
+      let namainstansisubmit = name.toLowerCase() + instansi.toLowerCase();
+      const namainstansidata =
+        event.extendedProps.nama.toLowerCase() +
+        event.extendedProps.instansi.toLowerCase();
+      return namainstansisubmit === namainstansidata;
+    });
+    if (cekeventsama) {
+      alert("Peserta dengan nama dan instansi ini sudah ada.");
+      return;
+    }
     if (totalJumlahOnSelectedDate + Number(jumlah) > 150) {
       alert(
-        "Jumlah Seluruh Peserta sudah melebihi kapasitas. Silahkan pilih tanggal lain."
+        "Jumlah Seluruh Peserta sudah melebihi kapasitas. Silahkan pilih tanggal lain./"
       );
     } else {
       var eventData = {

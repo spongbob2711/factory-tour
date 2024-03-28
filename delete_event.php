@@ -1,18 +1,50 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Change Event Date</title>
+    <title>Delete Event</title>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="style/home.css" />
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+body {
+margin-top:70px;
+}
+</style>
+
   </head>
-  <body>
+ 
+  <body>  
+  <nav class="navbar-container">
+      <div class="left-section">
+        <div class="web-title">Marimas Factory Tours</div>
+      </div>
+      <div class="right-section">
+        <!-- <div class="navbar-right">Home</div>
+        <div class="navbar-right">Order</div> -->
+        <a href="#" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
+        <a href="change_date.php" class="navbar-order" style="text-decoration: none;">Ubah Tanggal</a>
+         <a href="logout.php" >Sign Out</a>
+      </div>
+    </nav>
+
+    <h1>Hapus Acara</h1>
+
     <form id="dateForm">
       <label for="eventSelect">Pilih Acara:</label><br />
       <select id="eventSelect" name="eventSelect"></select
       ><br />
-      <label for="newDate">Tanggal Baru:</label><br />
-      <input type="date" id="newDate" name="newDate" /><br />
       <input type="submit" value="Submit" />
     </form>
 
@@ -84,7 +116,6 @@
             e.preventDefault();
             var eventTitleAndInstansi =
               document.getElementById("eventSelect").value;
-            var newDate = document.getElementById("newDate").value;
 
             var events = calendar.getEvents();
             var event = events.find(function (event) {
@@ -97,12 +128,9 @@
             });
 
             if (event) {
-              var newStartDate = new Date(newDate);
-              event.setStart(newStartDate, { maintainDuration: true });
               var eventData = {
                 name: event.title,
                 instansi: event.extendedProps.instansi,
-                date: newDate,
               };
               $.ajax({
                 url: "db_update.php", // replace with your server-side script URL
