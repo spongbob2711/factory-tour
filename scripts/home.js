@@ -40,7 +40,7 @@ let calcScrollValue = () => {
 
 window.onscroll = calcScrollValue;
 window.onload = calcScrollValue;
-
+//slider gallery
 var swiper = new Swiper(".swiper-container", {
   slidesPerView: 1,
   spaceBetween: 0,
@@ -62,9 +62,9 @@ var swiper = new Swiper(".swiper-container", {
       spaceBetween: 0,
     },
   },
-  loop: true, // Enable looping
+  loop: true,
   autoplay: {
-    delay: 2500, // Delay between transitions (in ms)
-    disableOnInteraction: false, // If true, autoplay will stop after user interaction
+    delay: 2500,
+    disableOnInteraction: false,
   },
 });

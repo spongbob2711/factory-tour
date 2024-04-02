@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (totalJumlahOnSelectedDate + Number(jumlah) > 150) {
       alert(
-        "Jumlah Seluruh Peserta sudah melebihi kapasitas. Silahkan pilih tanggal lain./"
+        "Jumlah Seluruh Peserta sudah melebihi kapasitas. Silahkan pilih tanggal lain."
       );
     } else {
       var eventData = {

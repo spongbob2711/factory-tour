@@ -133,7 +133,7 @@ margin-top:70px;
                 instansi: event.extendedProps.instansi,
               };
               $.ajax({
-                url: "db_update.php", // replace with your server-side script URL
+                url: "db_delete.php", // replace with your server-side script URL
                 method: "POST",
                 data: eventData,
                 success: function (response) {

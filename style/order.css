@@ -160,9 +160,43 @@ body {
 .submit-container {
   display: flex;
 }
-.jadwal-text {
-  visibility: hidden;
+.order-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  /* border: var(--border-green); */
 }
+.wa-cs-container {
+  display: flex;
+  /* justify-content: end; */
+}
+.jadwal-info-container,
+.wa-cs-container {
+  font-size: var(--fs-400);
+  margin-left: 8vw;
+}
+.jadwal-info-container {
+  display: flex;
+
+  visibility: hidden;
+  /* border: var(--border-green); */
+}
+
+.whatsapp-logo,
+.arrow-down-logo {
+  height: var(--fs-400);
+  /* border: var(--border-black); */
+}
+.whatsapp-link {
+  text-decoration: none;
+  color: var(--color-orange);
+}
+.whatsapp-link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
 @media (max-width: 800px) {
   .web-title {
     margin-right: 4vw;
@@ -187,12 +221,24 @@ body {
   .form-left {
     margin-bottom: 10vh;
   }
-  .jadwal-text {
-    display: flex;
-    align-items: center;
-    visibility: unset;
+
+  .wa-cs-container {
     margin-left: 19vw;
+  }
+  .jadwal-info-container {
+    margin-left: 19vw;
+    visibility: unset;
+  }
+  .jadwal-text {
     color: var(--color-orange);
+  }
+  .jadwal-info-container,
+  .wa-cs-container {
+    font-size: 10px;
+  }
+  .arrow-down-logo,
+  .whatsapp-logo {
+    height: 10px;
   }
   .form-right {
     width: 100%;
