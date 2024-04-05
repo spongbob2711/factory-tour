@@ -4,10 +4,10 @@ $username = "root";
 $password = "";
 $dbname = "event_marimas";
 
-// Create connection
+
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
@@ -18,7 +18,7 @@ $result = $conn->query($sql);
 $events = array();
 
 if ($result->num_rows > 0) {
-  // Output data of each row
+  
     while($row = $result->fetch_assoc()) {
       $event = array(
         'title' => $row['name'],

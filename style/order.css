@@ -153,9 +153,9 @@ body {
   width: 500px;
 }
 .fc-event .fc-event-title {
-  white-space: normal !important; /* Allow the text to wrap to the next line */
-  overflow: visible !important; /* Show the overflowed text */
-  text-overflow: clip !important; /* Don't add an ellipsis */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
 }
 .submit-container {
   display: flex;

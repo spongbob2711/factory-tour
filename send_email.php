@@ -11,7 +11,7 @@ if (isset($data['name'], $data['email'], $data['date'], $data['instansi'], $data
     $jumlah = $data['jumlah'];
 
 
-    // Create a new email object
+    
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom(FROM_EMAIL, FROM_NAME);
 $email->setSubject("Konfirmasi pemesanan acara Marimas Factory Tour");
@@ -20,16 +20,15 @@ $email->addContent(
     "text/html",
     "Halo,<br><br>Terima kasih atas pemesanannya Bapak/Ibu $name dari instansi $instansi. Anda telah melakukan pemesanan acara Marimas Factory Tour yang memiliki peserta berjumlah $jumlah orang pada tanggal $date.Tunggu konfirmasi lebih lanjut dari kami.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
 );
-// Create a new SendGrid instance
+
 $sendgrid = new \SendGrid(SENDGRID_API_KEY);
 
-// Send the email
 $response = $sendgrid->send($email);
 
-// Calculate the date three days before the event
+//h-3 email
 $reminderDate = date('Y-m-d', strtotime($date . ' -3 days'));
 
-// Create a new email object for the reminder
+
 $reminderEmail = new \SendGrid\Mail\Mail();
 $reminderEmail->setFrom(FROM_EMAIL, FROM_NAME);
 $reminderEmail->setSubject("Pengingat pemesanan acara Marimas Factory Tour");
@@ -40,7 +39,7 @@ $reminderEmail->addContent(
 );
 $reminderEmail->setSendAt(strtotime($reminderDate));
 
-// Schedule the reminder email
+
 $response = $sendgrid->send($reminderEmail);
 
     
@@ -48,7 +47,7 @@ $response = $sendgrid->send($reminderEmail);
     echo "Form data is not set.";
 }
 
-// // Get form data
+
 // $name = $_POST['name'];
 // $emailAddress = $_POST['email'];
 // $date = $_POST['date'];

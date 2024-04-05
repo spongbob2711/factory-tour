@@ -1,8 +1,7 @@
 <?php
-// Initialize the session
+
 session_start();
  
-// Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -45,20 +44,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div id="calendar"></div>
 
     <script>
-      // Fetch the events from the server when the page loads
+    
       $.ajax({
         url: "db_get.php",
         method: "POST",
         success: function (events) {
           var eventSelect = document.getElementById("eventSelect");
           events.forEach(function (eventData) {
-            // Create a new option element for each event
+            
             var option = document.createElement("option");
             option.value =
               eventData.title + " - " + eventData.extendedProps.instansi;
             option.text =
               eventData.title + " - " + eventData.extendedProps.instansi;
-            // Add the option element to the select element
             eventSelect.add(option);
           });
         },
@@ -69,7 +67,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: "dayGridMonth",
           eventDidMount: function (info) {
-            // Set the HTML of the event's title element to allow text wrapping
             info.el.querySelector(".fc-event-title").innerHTML =
               '<div style="white-space:normal;">' + info.event.title + "</div>";
           },
@@ -77,7 +74,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             {
               events: function (fetchInfo, successCallback, failureCallback) {
                 $.ajax({
-                  url: "db_get.php", // replace with your server-side script URL
+                  url: "db_get.php", 
                   method: "POST",
                   success: function (events) {
                     var fullCalendarEvents = events.map(function (eventData) {
@@ -131,13 +128,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 date: newDate,
               };
               $.ajax({
-                url: "db_update.php", // replace with your server-side script URL
+                url: "db_update.php", 
                 method: "POST",
                 data: eventData,
                 success: function (response) {
-                  // Handle the server's response here
+                  
                   console.log(response);
-                  // Refetch events from the server
+                  
                   calendar.refetchEvents();
                 },
               });

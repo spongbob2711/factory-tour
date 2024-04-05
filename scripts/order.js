@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
     eventDidMount: function (info) {
-      // Set the HTML of the event's title element to allow text wrapping
       info.el.querySelector(".fc-event-title").innerHTML =
         '<div style="white-space:normal;">' + info.event.title + "</div>";
     },
@@ -12,10 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         events: function (fetchInfo, successCallback, failureCallback) {
           $.ajax({
-            url: "db_get.php", // replace with your server-side script URL
+            url: "db_get.php",
             method: "POST",
             success: function (events) {
-              // Convert the events data to the format expected by FullCalendar
               var fullCalendarEvents = events.map(function (eventData) {
                 return {
                   title:
@@ -49,22 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
     var instansi = document.getElementById("instansi").value;
     var jumlah = document.getElementById("jumlah").value;
 
-    // Create Date objects for the selected date and today's date
     var selectedDate = new Date(date);
     var today = new Date();
 
-    // Set the time of both dates to 00:00:00 for a fair comparison
     selectedDate.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
 
-    // Check if the selected date is today or before today
     if (selectedDate <= today) {
       alert("Tanggal harus setelah hari ini.");
-      return; // Stop the function here
+      return;
     }
+
     let eventsOnSelectedDate = calendar
       .getEvents()
       .filter((event) => event.startStr === date);
+
     let totalJumlahOnSelectedDate = eventsOnSelectedDate.reduce(
       (total, event) => total + Number(event.extendedProps.jumlah),
       0
@@ -99,11 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         data: eventData,
         success: function (response) {
-          // Handle the server's response here
           console.log(response);
-          // Refetch events from the server
+
           calendar.refetchEvents();
-          // Clear the form fields
+
           document.getElementById("name").value = "";
           document.getElementById("email").value = "";
           document.getElementById("date").value = "";
@@ -111,10 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("jumlah").value = "";
         },
       });
-      // AJAX call to SendGrid PHP file
+      //sendgrid
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "send_email.php"); // replace with your SendGrid PHP file
-      xhr.setRequestHeader("Content-Type", "application/json"); // Set the content type to JSON
+      xhr.open("POST", "send_email.php");
+      xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onload = function () {
         console.log(this.response);
       };
@@ -122,6 +118,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Render the calendar
   calendar.render();
 });
