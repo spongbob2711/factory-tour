@@ -35,6 +35,8 @@ margin-top:70px;
         <div class="navbar-right">Order</div> -->
         <a href="#" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
         <a href="change_date.php" class="navbar-order" style="text-decoration: none;">Ubah Tanggal</a>
+        <a href="export_event.php" class="navbar-order" style="text-decoration: none;">Export Acara</a>
+
          <a href="logout.php" >Sign Out</a>
       </div>
     </nav>
@@ -61,9 +63,9 @@ margin-top:70px;
             
             var option = document.createElement("option");
             option.value =
-              eventData.title + " - " + eventData.extendedProps.instansi;
+              eventData.extendedProps.id;
             option.text =
-              eventData.title + " - " + eventData.extendedProps.instansi;
+            eventData.extendedProps.instansi + " - " + eventData.start + " - " + eventData.extendedProps.jumlah + " orang" ;
             
             eventSelect.add(option);
           });
@@ -88,10 +90,11 @@ margin-top:70px;
                   success: function (events) {
                     var fullCalendarEvents = events.map(function (eventData) {
                       return {
-                        title: eventData.title,
+                        title: eventData.extendedProps.instansi + "<br>" + eventData.extendedProps.jumlah + " orang",
                         start: eventData.start,
                         allDay: true,
                         extendedProps: {
+                          id: eventData.extendedProps.id,
                           jumlah: eventData.extendedProps.jumlah,
                           email: eventData.extendedProps.email,
                           instansi: eventData.extendedProps.instansi,
@@ -114,41 +117,44 @@ margin-top:70px;
           .getElementById("dateForm")
           .addEventListener("submit", function (e) {
             e.preventDefault();
-            var eventTitleAndInstansi =
+            var eventChanged =
               document.getElementById("eventSelect").value;
 
             var events = calendar.getEvents();
             var event = events.find(function (event) {
-              var eventTitleAndInstansiCurrent =
-                event.title + " - " + event.extendedProps.instansi;
-              console.log("title: " + event.title);
-              console.log(eventTitleAndInstansi);
-              console.log("current: " + eventTitleAndInstansiCurrent);
-              return eventTitleAndInstansiCurrent === eventTitleAndInstansi;
+              var eventCurrent = event.extendedProps.id;
+            // console.log("event current: " + eventCurrent);
+            // console.log("event current type: " + typeof eventCurrent);
+            return eventCurrent === eventChanged;
             });
 
             if (event) {
               var eventData = {
-                name: event.title,
-                instansi: event.extendedProps.instansi,
+                id: event.extendedProps.id,               
               };
-              $.ajax({
-                url: "db_delete.php", 
-                method: "POST",
-                data: eventData,
-                success: function (response) {
-                  
-                  console.log(response);
-                  
-                  calendar.refetchEvents();
-                },
-              });
+              
+              // Add a confirmation dialog
+              var confirmation = confirm("Apakah anda yakin menghapus acara ini?");
+              
+              if (confirmation) {
+                $.ajax({
+                  url: "db_delete.php", 
+                  method: "POST",
+                  data: eventData,
+                  success: function (response) {
+                    console.log(response);
+                    calendar.refetchEvents();
+                  },
+                });
+              } else {
+                console.log("Acara tidak jadi dihapus.");
+              }
             } else {
               alert(
-                "No event found with title and instansi: " +
-                  eventTitleAndInstansi
+                "No event found "                 
               );
             }
+
           });
       });
     </script>

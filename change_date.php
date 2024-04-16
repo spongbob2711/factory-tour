@@ -27,7 +27,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <!-- <div class="navbar-right">Home</div>
         <div class="navbar-right">Order</div> -->
         <a href="delete_event.php" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
+
         <a href="#" class="navbar-order" style="text-decoration: none;">Ubah Tanggal</a>
+        <a href="export_event.php" class="navbar-order" style="text-decoration: none;">Export Acara</a>
+
          <a href="logout.php" >Sign Out</a>
       </div>
     </nav>
@@ -54,9 +57,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             
             var option = document.createElement("option");
             option.value =
-              eventData.title + " - " + eventData.extendedProps.instansi;
+              eventData.extendedProps.id;
             option.text =
-              eventData.title + " - " + eventData.extendedProps.instansi;
+              eventData.extendedProps.instansi + " - " + eventData.start + " - " + eventData.extendedProps.jumlah + " orang" ;
             eventSelect.add(option);
           });
         },
@@ -79,10 +82,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   success: function (events) {
                     var fullCalendarEvents = events.map(function (eventData) {
                       return {
-                        title: eventData.title,
+                        title: eventData.extendedProps.instansi + " - "+ eventData.extendedProps.jumlah + " orang",
                         start: eventData.start,
                         allDay: true,
                         extendedProps: {
+                          id: eventData.extendedProps.id,
                           jumlah: eventData.extendedProps.jumlah,
                           email: eventData.extendedProps.email,
                           instansi: eventData.extendedProps.instansi,
@@ -105,45 +109,67 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           .getElementById("dateForm")
           .addEventListener("submit", function (e) {
             e.preventDefault();
-            var eventTitleAndInstansi =
+            var eventChanged =
               document.getElementById("eventSelect").value;
+              console.log("event changed: " + eventChanged);
+              console.log("event changed type: " + typeof eventChanged);
             var newDate = document.getElementById("newDate").value;
 
             var events = calendar.getEvents();
             var event = events.find(function (event) {
-              var eventTitleAndInstansiCurrent =
-                event.title + " - " + event.extendedProps.instansi;
-              console.log("title: " + event.title);
-              console.log(eventTitleAndInstansi);
-              console.log("current: " + eventTitleAndInstansiCurrent);
-              return eventTitleAndInstansiCurrent === eventTitleAndInstansi;
-            });
+            var eventCurrent = event.extendedProps.id;
+            // console.log("event current: " + eventCurrent);
+            // console.log("event current type: " + typeof eventCurrent);
+            return eventCurrent === eventChanged;
+          });
+
 
             if (event) {
-              var newStartDate = new Date(newDate);
-              event.setStart(newStartDate, { maintainDuration: true });
-              var eventData = {
-                name: event.title,
-                instansi: event.extendedProps.instansi,
-                date: newDate,
-              };
-              $.ajax({
-                url: "db_update.php", 
-                method: "POST",
-                data: eventData,
-                success: function (response) {
-                  
-                  console.log(response);
-                  
-                  calendar.refetchEvents();
-                },
-              });
-            } else {
-              alert(
-                "No event found with title and instansi: " +
-                  eventTitleAndInstansi
-              );
-            }
+            var newStartDate = new Date(newDate);
+            event.setStart(newStartDate, { maintainDuration: true });
+            var eventData = {
+              id: event.extendedProps.id,
+              date: newDate,
+            };  
+            $.ajax({
+              url: "db_update.php", 
+              method: "POST",
+              data: eventData,
+              success: function (response) {
+                console.log(response);
+                calendar.refetchEvents();
+
+      // Make another AJAX request to get the total number of people for the new date
+      $.ajax({
+        url: "db_get.php",
+        method: "POST",
+        data: { date: newDate },
+        success: function (events) {
+          var totalPeople = 0;
+          events.forEach(function (eventData) {
+            totalPeople += Number(eventData.extendedProps.jumlah);
+          });
+
+          // Display an alert with the new date and the total number of people
+          alert(
+            "The date for the event '" +
+              event.title +
+              "' has been changed to " +
+              newDate +
+              ". The total number of people for this date is now " +
+              totalPeople +
+              "."
+          );
+        },
+      });
+    },
+  });
+} else {
+  alert(
+    "No event found"
+  );
+}
+
           });
       });
     </script>

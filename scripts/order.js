@@ -1,3 +1,13 @@
+function formatInput(input) {
+  // Remove any non-digit characters
+  var num = input.value.replace(/\D/g, "");
+
+  // Add a space after every 4th digit
+  num = num.replace(/(\d{4})/g, "$1 ").trim();
+
+  // Update the input value
+  input.value = num;
+}
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
@@ -17,7 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
               var fullCalendarEvents = events.map(function (eventData) {
                 return {
                   title:
-                    eventData.title + "\n" + eventData.extendedProps.instansi,
+                    eventData.extendedProps.instansi +
+                    "<br>" +
+                    eventData.extendedProps.jumlah +
+                    " org",
                   start: eventData.start,
                   allDay: true,
                   extendedProps: {
@@ -46,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var date = document.getElementById("date").value;
     var instansi = document.getElementById("instansi").value;
     var jumlah = document.getElementById("jumlah").value;
+    var nomorwa = document.getElementById("nomorwa").value;
 
     var selectedDate = new Date(date);
     var today = new Date();
@@ -90,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         date: date,
         instansi: instansi,
         jumlah: jumlah,
+        nomorwa: nomorwa,
       };
       $.ajax({
         url: "db_insert.php",
@@ -105,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("date").value = "";
           document.getElementById("instansi").value = "";
           document.getElementById("jumlah").value = "";
+          document.getElementById("nomorwa").value = "";
         },
       });
       //sendgrid

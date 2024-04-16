@@ -24,14 +24,14 @@
       <div class="right-section">
         <!-- <div class="navbar-right">Home</div>
         <div class="navbar-right">Order</div> -->
-        <a href="home.html" class="navbar-home">Home</a>
-        <a href="#" class="navbar-order">Order</a>
+        <a href="home.html" class="navbar-home">Beranda</a>
+        <a href="#" class="navbar-order">Daftar</a>
       </div>
     </nav>
     <div class="order-container">
       <form class="form-left" id="eventForm">
         <div class="form-title">
-          <h2>Form Pemesanan Marimas Factory Tour</h2>
+          <h2>Form Pendaftaran Marimas Factory Tour</h2>
           <hr />
         </div>
 
@@ -40,15 +40,33 @@
           type="text"
           id="name"
           name="name"
-          placeholder="Masukkan Nama"
+          placeholder="Nama"
           required
+        />
+        <input
+          type="tel"
+          maxlength="14"
+          class="form-input"
+          id="nomorwa"
+          name="nomorwa"
+          placeholder="Nomor Whatsapp"
+          required
+          oninput="formatInput(this)"
         />
         <input
           type="email"
           class="form-input"
           id="email"
           name="email"
-          placeholder="Masukkan Email"
+          placeholder="Email"
+          required
+        />
+        <input
+          class="form-input"
+          type="text"
+          name="instansi"
+          id="instansi"
+          placeholder="Instansi  "
           required
         />
         <input
@@ -56,18 +74,11 @@
           class="form-input"
           id="jumlah"
           name="jumlah"
-          placeholder="Masukkan Jumlah Peserta"
+          placeholder="Jumlah Peserta"
           required
         />
         <input class="form-input" id="date" type="date" name="date" required />
-        <input
-          class="form-input"
-          type="text"
-          name="instansi"
-          id="instansi"
-          placeholder="Masukkan Instansi  "
-          required
-        />
+
         <div class="submit-container">
           <input class="submit-button" type="submit" />
           <div class="order-info-container">
@@ -77,12 +88,12 @@
                 href="https://wa.me/628502733802"
                 target="_blank"
                 class="whatsapp-link"
-                >Klik untuk menghubungi melalui WA</a
+                >Hubungi Admin Kami</a
               >
             </div>
             <div class="jadwal-info-container">
               <img src="img/arrow-down-line.png" class="arrow-down-logo" />
-              <div class="jadwal-text">Jadwal Pemesanan Ada Di Bawah</div>
+              <div class="jadwal-text">Jadwal Pendaftaran Ada Di Bawah</div>
             </div>
           </div>
         </div>

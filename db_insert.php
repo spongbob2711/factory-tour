@@ -4,9 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "event_marimas";
 
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -17,19 +15,19 @@ $email = $_POST['email'];
 $date = $_POST['date'];
 $instansi = $_POST['instansi'];
 $jumlah = $_POST['jumlah'];
+// $nomorwa = str_replace(' ', '', $_POST['nomorwa']); // Remove spaces from the phone number
 
-//  $sql = "INSERT INTO 'event' (no,name, email, date,instansi)
-//  VALUES ('','$name', '$email', '$date','$instansi')";
-  $sql = "INSERT INTO `event` (`no`, `name`, `email`,`date`, `instansi`,`jumlah`)
-  VALUES ('', '$name', '$email', '$date', '$instansi','$jumlah')";
+$stmt = $conn->prepare("INSERT INTO `event` (`no`, `name`, `email`,`date`, `instansi`,`jumlah`,`nomorwa`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $no, $name, $email, $date, $instansi, $jumlah, $nomorwa);
 
-//$rs = mysqli_query($conn, $sql);
+$no = '';
 
-if ($conn->query($sql) === TRUE) {
+if ($stmt->execute() === TRUE) {
   echo "New record created successfully";
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  echo "Error: " . $stmt->error;
 }
 
+$stmt->close();
 $conn->close();
 ?>

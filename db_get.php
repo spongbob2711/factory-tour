@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT name, email, date, instansi, jumlah FROM event";
+$sql = "SELECT no,name, email, date, instansi, jumlah FROM event";
 $result = $conn->query($sql);
 
 $events = array();
@@ -24,6 +24,7 @@ if ($result->num_rows > 0) {
         'title' => $row['name'],
         'start' => $row['date'],
         'extendedProps' => array(
+          'id' => $row['no'],
           'jumlah' => $row['jumlah'],
           'email' => $row['email'],
           'instansi' => $row['instansi'],
