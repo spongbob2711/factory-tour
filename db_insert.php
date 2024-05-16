@@ -15,6 +15,7 @@ $email = $_POST['email'];
 $date = $_POST['date'];
 $instansi = $_POST['instansi'];
 $jumlah = $_POST['jumlah'];
+$nomorwa = $_POST['nomorwa'];
 // $nomorwa = str_replace(' ', '', $_POST['nomorwa']); // Remove spaces from the phone number
 
 $stmt = $conn->prepare("INSERT INTO `event` (`no`, `name`, `email`,`date`, `instansi`,`jumlah`,`nomorwa`) VALUES (?, ?, ?, ?, ?, ?, ?)");

@@ -68,3 +68,16 @@ var swiper = new Swiper(".swiper-container", {
     disableOnInteraction: false,
   },
 });
+
+var vh = 40;
+var vw = (vh * window.innerWidth) / window.innerHeight;
+
+var svgElement = document.getElementById("visual");
+svgElement.setAttribute("width", vw + "vw");
+svgElement.setAttribute("height", vh + "vh");
+
+window.addEventListener("resize", function () {
+  vw = (vh * window.innerWidth) / window.innerHeight;
+  svgElement.setAttribute("width", vw + "vw");
+  svgElement.setAttribute("height", vh + "vh");
+});

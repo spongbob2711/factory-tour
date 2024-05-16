@@ -1,0 +1,140 @@
+:root {
+  --ff-montserrat: "Montserrat", sans-serif;
+  --border-black: black 2px solid;
+  --border-white: white 2px solid;
+  --border-green: green 2px solid;
+  --color-orange: hsl(23, 100%, 50%, 0.945);
+
+  --ff-light: 200;
+  --ff-normal: 400;
+  --ff-semibold: 500;
+  --ff-bold: 600;
+
+  --fs-400: 0.9375rem;
+  --fs-900: 3rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.625rem;
+  --fs-800: 2.625rem;
+
+  --clr-neutral-900: hsl(234, 12%, 34%);
+  --clr-neutral-400: hsl(229, 6%, 66%);
+  --clr-neutral-100: hsl(0, 0%, 98%);
+}
+* {
+  font-family: var(--ff-montserrat);
+}
+
+body {
+  margin-left: 1vw !important;
+  margin-right: 1vw !important;
+  margin-bottom: 0;
+  margin-top: 65px !important ;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: var(--ff-montserrat);
+}
+.navbar-container {
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  top: 5px;
+  right: 2px;
+  left: 2px;
+  height: 60px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 35px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-container > * {
+  color: hsl(23, 100%, 50%, 0.945);
+  font-weight: bold;
+  font-size: var(--fs-500);
+}
+.navbar-home,
+.navbar-order {
+  color: hsl(23, 100%, 50%, 0.945);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-home:hover,
+.navbar-order:hover {
+  color: green;
+}
+.left-section {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex: 6;
+}
+.logo-nav-marimas {
+  height: 8vh;
+  margin-left: 2vw;
+}
+.web-title {
+  margin-left: 1vw;
+}
+.right-section {
+  display: flex;
+  justify-content: center;
+  /* border: white 2px solid; */
+  flex: 4;
+}
+.right-section > * {
+  /* border: white 2px solid; */
+  text-align: center;
+  flex: 1;
+}
+
+#eventSelect,
+.exportdate,
+#newDate {
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: var(--ff-bold);
+  font-size: 16px;
+  color: black;
+  background-color: #f8f8f8;
+}
+
+.submit-button {
+  margin-top: 2vh;
+  padding: 5px 10px;
+}
+#calendar {
+  margin-top: 2vh;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+.form-container input[type="date"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.form-container input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-container input[type="submit"]:hover {
+  background-color: #45a049;
+}

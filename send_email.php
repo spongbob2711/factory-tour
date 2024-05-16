@@ -25,22 +25,6 @@ $sendgrid = new \SendGrid(SENDGRID_API_KEY);
 
 $response = $sendgrid->send($email);
 
-//h-3 email
-$reminderDate = date('Y-m-d', strtotime($date . ' -3 days'));
-
-
-$reminderEmail = new \SendGrid\Mail\Mail();
-$reminderEmail->setFrom(FROM_EMAIL, FROM_NAME);
-$reminderEmail->setSubject("Pengingat pemesanan acara Marimas Factory Tour");
-$reminderEmail->addTo($emailAddress, $name);
-$reminderEmail->addContent(
-    "text/html",
-    "Hallo,<br><br>Halo Bapak/Ibu $name dari instansi $instansi. Kami mengingatkan Anda telah melakukan pemesanan pada tanggal $date dengan jumlah peserta $jumlah orang.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
-);
-$reminderEmail->setSendAt(strtotime($reminderDate));
-
-
-$response = $sendgrid->send($reminderEmail);
 
     
 } else {

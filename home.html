@@ -7,8 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -19,30 +21,34 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
     <link rel="stylesheet" href="style/home.css" />
   </head>
+
   <body>
     <div id="progress">
       <span id="progress-value">&#x1F815;</span>
     </div>
+    <div class="top-background"></div>
     <nav class="navbar-container">
       <div class="left-section">
-        <div class="web-title">Marimas Factory Tours</div>
+        <img src="img/logo-marimas.png" class="logo-nav-marimas" />
+        <div class="web-title">Marimas Factory Tour</div>
       </div>
       <div class="right-section">
-        <!-- <div class="navbar-right">Home</div>
-        <div class="navbar-right">Order</div> -->
         <a href="#" class="navbar-home">Beranda</a>
         <a href="order.html" class="navbar-order">Daftar</a>
       </div>
     </nav>
+
     <div class="home-container">
       <div class="home-word">
         <h1 class="home-text">
           Kegiatan Factory Tour Ke Pabrik Marimas Dapatkan Pengalaman Seru!
         </h1>
         <!-- onclick='window.location.href = "http://127.0.0.1:5501/order.html";' -->
-        <a href="order.html" class="order-button"> Pesan <br />Sekarang </a>
+        <a href="order.html" class="order-button"> Daftar <br />Sekarang </a>
       </div>
       <div class="slider">
         <div class="home-photo-container">
@@ -60,19 +66,13 @@
         </div>
       </div>
     </div>
+    <div class="spacer layer1"></div>
     <div class="banner-1-container">
       <div class="banner-1-left-section">
         <div class="banner-1-text">
-          Bertahun-tahun Marimas telah mengadakan kegiatan Factory Tour untuk
-          berbagai kalangan yang diikuti oleh pelajar SD SMP SMA Mahasiswa ,
-          Masyarakat Umum Dan Instansi Pemerintahan. Factory Tour Marimas
-          merupakan salahsatu bentuk komitmen PT Marimas Putera Kencana untuk
-          berbagi pengetahuan kepada Masyarakat. Dengan mengusung konsep fun
-          experience and education merupakan konsep kunjungan ke pabrik Marimas
-          dimana mengajak pengunjung untuk mengikuti serangkaian kegiatan yang
-          inovatif dan interaktif. Konsep kunjungan ini bertujuan memberikan
-          pengalamaan dan edukasi bagi peserta melalui kegiatan menarik dan
-          menyenangkan.
+          Dengan mengusung konsep fun experience and education, Marimas Factory
+          Tour memberikan pengalamaan dan edukasi bagi peserta melalui kegiatan
+          menarik dan menyenangkan.
         </div>
       </div>
       <div class="banner-1-right-section">
@@ -86,18 +86,28 @@
         ></iframe>
       </div>
     </div>
+    <div class="spacer layer2"></div>
+
     <div class="banner-2-container">
-      <div class="banner-2-quote">
-        <img src="img/double-quotes-r.png" class="quote-icon" />
+      <div class="banner-2-left-section">
+        <img src="img/foto-marifood.png" class="banner-2-photo" />
       </div>
-      <div class="banner-2-text">
-        Sesuai dengan slogan Marimas yakni “<span class="banner-2-special-text"
-          >Marimas Makin Kusuka</span
-        >“ diharapkan dapat memberikan pengetahuan kepada masyarakat Indonesia
-        mengenai proses produksi Marimas yang higienis , aman dan standar proses
-        produksi yang ketat. Sehingga Marimas Makin Disukai
+      <div class="banner-2-right-section">
+        <div class="banner-2-quote">
+          <img src="img/double-quotes-r.png" class="quote-icon" />
+        </div>
+        <div class="banner-2-text">
+          Sesuai dengan slogan Marimas yakni “<span
+            class="banner-2-special-text"
+            >Marimas Makin Kusuka</span
+          >“ diharapkan dapat memberikan pengetahuan kepada masyarakat Indonesia
+          mengenai proses produksi Marimas yang higienis , aman dan standar
+          proses produksi yang ketat. Sehingga Marimas Makin Disukai
+        </div>
       </div>
     </div>
+    <div class="spacer layer3"></div>
+
     <div class="banner-3-container">
       <div class="banner-3-left-section">
         <div class="banner-3-title">Syarat Dan Ketentuan</div>
@@ -116,9 +126,7 @@
         </div>
         <div class="banner-3-list-container">
           <img src="img/group-fill.png" class="banner-3-icon" />
-          <div class="banner-3-text">
-            Pengunjung minimal 25 orang dan maksimal 30 orang.
-          </div>
+          <div class="banner-3-text">Pengunjung maksimal 150 orang.</div>
         </div>
         <div class="banner-3-list-container">
           <img src="img/calendar-check-fill.png" class="banner-3-icon" />
@@ -150,37 +158,79 @@
         <div class="banner-3-right-text">
           Hari : Selasa – Jumat <br />
           Jam: 08.00 – 12.00 WIB <br />Lokasi: Aula Marifood <br />Kuota:
-          maksimal 30 org/ kunjungan
+          maksimal 150 orang/ kunjungan
         </div>
       </div>
+      <div class="blob-svg-container">
+        <svg
+          id="visual"
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+        >
+          <g transform="translate(265.1439608622411 257.75928761180563)">
+            <path
+              id="blob1"
+              d="M140.5 -152.5C163.2 -117.9 149.6 -58.9 134.9 -14.7C120.1 29.5 104.3 58.9 81.6 96.4C58.9 133.9 29.5 179.5 0 179.5C-29.5 179.5 -58.9 133.9 -93.4 96.4C-127.9 58.9 -167.5 29.5 -179.1 -11.7C-190.8 -52.8 -174.6 -105.6 -140.1 -140.3C-105.6 -174.9 -52.8 -191.5 3.1 -194.5C58.9 -197.6 117.9 -187.2 140.5 -152.5"
+              fill="#DCDCDC"
+            ></path>
+          </g>
+          <g transform="translate(227.5849459246901 263.03498846502447)">
+            <path
+              id="blob2"
+              d="M125.8 -130.8C162.4 -89.1 191.2 -44.5 193.3 2.1C195.5 48.8 170.9 97.6 134.2 131.7C97.6 165.9 48.8 185.5 9.2 176.3C-30.4 167.1 -60.8 129.1 -90.5 95C-120.1 60.8 -149.1 30.4 -148.6 0.5C-148.1 -29.5 -118.3 -58.9 -88.6 -100.6C-58.9 -142.3 -29.5 -196.1 7.5 -203.7C44.5 -211.2 89.1 -172.4 125.8 -130.8"
+              fill="#DCDCDC"
+            ></path>
+          </g>
+        </svg>
+      </div>
+      <script>
+        const tween1 = KUTE.fromTo(
+          "#blob1",
+          { path: "#blob1" },
+          { path: "#blob2" },
+          { duration: 3000, yoyo: true, repeat: Infinity }
+        );
+
+        tween1.start();
+      </script>
     </div>
     <div class="gallery-container">
       <div class="gallery-title">Gallery</div>
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <img src="img/Factory-Tour139.png" alt="Image 1" />
+            <img src="img/foto1.jpg" alt="Image 1" />
           </div>
           <div class="swiper-slide">
-            <img src="img/Factory-Tour223.png" alt="Image 2" />
+            <img src="img/foto2.jpg" alt="Image 2" />
           </div>
           <div class="swiper-slide">
-            <img src="img/Factory-Tour234.png" alt="Image 3" />
+            <img src="img/foto3.jpg" alt="Image 3" />
           </div>
           <div class="swiper-slide">
-            <img src="img/Factory-Tour297.png" alt="Image 4" />
+            <img src="img/foto 4.jpg" alt="Image 4" />
           </div>
           <div class="swiper-slide">
-            <img src="img/Factory-Tour330.png" alt="Image 5" />
+            <img src="img/foto 5.jpg" alt="Image 5" />
           </div>
           <div class="swiper-slide">
-            <img src="img/Factory-Tour383.png" alt="Image 6" />
+            <img src="img/foto 6.jpg" alt="Image 6" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/foto 7.jpg" alt="Image 7" />
           </div>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
+    </div>
+    <div class="order-button-bottom-container">
+      <a href="order.html" class="order-button-bottom">
+        Daftar <br />Sekarang
+      </a>
     </div>
 
     <footer>
@@ -217,13 +267,14 @@
             <div class="footer-text">(024) 7614027</div>
           </div>
           <div class="contact-sub-container">
-            <img src="img/mail-fill.png" class="mail-icon" />
-            <div class="footer-text">marketing@marimas.com</div>
+            <img src="img/whatsapp-line-ungu.png" class="phone-icon" />
+            <div class="footer-text">+62 856-0273-3802 (atm Bu Rosida)</div>
           </div>
           <div class="contact-sub-container">
             <img src="img/mail-fill.png" class="mail-icon" />
-            <div class="footer-text">export@marifood.co.id</div>
+            <div class="footer-text">marketing@marimas.com</div>
           </div>
+
           <div class="contact-sub-container">
             <img src="img/map-pin-fill.png" class="location-icon" />
             <div class="footer-text">
@@ -233,15 +284,14 @@
           </div>
         </div>
         <div class="links-footer-container">
-          <div class="footer-title">Links</div>
+          <div class="footer-title-link">Links</div>
           <div class="links-sub-container">
-            <a href="" class="footer-link">Join Us</a>
+            <a href="https://marimas.com/" class="footer-link">Marimas.com</a>
           </div>
           <div class="links-sub-container">
-            <a href="" class="footer-link">Marimas Ecobrick</a>
-          </div>
-          <div class="links-sub-container">
-            <a href="#" class="footer-link">Factory Tour</a>
+            <a href="https://marifood.co.id/" class="footer-link"
+              >Marifood.com</a
+            >
           </div>
         </div>
       </div>

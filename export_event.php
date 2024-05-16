@@ -83,32 +83,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <head>
       <title>Export to Excel</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <link rel="stylesheet" href="style/home.css" />
+      <link rel="stylesheet" href="style/admin.css" />
   </head>
   <body>
   <nav class="navbar-container">
         <div class="left-section">
-          <div class="web-title">Marimas Factory Tours</div>
+          <div class="web-title">Marimas Factory Tour</div>
         </div>
         <div class="right-section">
           <!-- <div class="navbar-right">Home</div>
           <div class="navbar-right">Order</div> -->
           <a href="delete_event.php" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
 
-          <a href="change_date.php" class="navbar-order" style="text-decoration: none;">Ubah Tanggal</a>
-          <a href="#" class="navbar-order" style="text-decoration: none;">Export Acara</a>
+          <a href="change_date.php" class="navbar-order" style="text-decoration: none;">Ubah <br>Tanggal</a>
+          <a href="#" class="navbar-order" style="text-decoration: none;">Export <br>Acara</a>
 
-          <a href="logout.php" >Sign Out</a>
+          <a href="logout.php" >Sign <br>Out</a>
         </div>
       </nav>
-      <br>
+      <div class="form-container">
       <form action="" method="post">
           <label for="start_date">Start Date:</label>
-          <input type="date" id="start_date" name="start_date" required>
+          <input class="exportdate" type="date" id="start_date" name="start_date" required>
+          <br>
           <label for="end_date">End Date:</label>
-          <input type="date" id="end_date" name="end_date" required>
+          <input class="exportdate" type="date" id="end_date" name="end_date" required>
+          <br>
           <input type="submit" value="Export to Excel">
       </form>
+      </div>
+    
      
   </body>
   </html>
