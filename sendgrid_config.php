@@ -7,6 +7,8 @@
 
 
 	define( 'FROM_NAME', 'PT Marimas Putera Kencana' );
+	
+	define('EMAIL_ADMIN', 'bintorojevan@gmail.com');
 
 	
 

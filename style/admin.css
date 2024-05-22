@@ -57,19 +57,22 @@ html {
 .navbar-container > * {
   color: hsl(23, 100%, 50%, 0.945);
   font-weight: bold;
-  font-size: var(--fs-500);
+  font-size: 1rem;
 }
 .navbar-home,
 .navbar-order {
-  color: hsl(23, 100%, 50%, 0.945);
+  color: white;
+  background: var(--color-orange);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 15px;
 }
-
 .navbar-home:hover,
 .navbar-order:hover {
-  color: green;
+  filter: brightness(1.4);
+  color: white;
 }
+
 .left-section {
   display: flex;
   align-items: center;
@@ -88,6 +91,7 @@ html {
   justify-content: center;
   /* border: white 2px solid; */
   flex: 4;
+  gap: 1vw;
 }
 .right-section > * {
   /* border: white 2px solid; */

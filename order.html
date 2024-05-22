@@ -55,6 +55,7 @@
           required
           oninput="formatInput(this)"
         />
+
         <input
           type="email"
           class="form-input"
@@ -79,19 +80,37 @@
           placeholder="Jumlah Peserta"
           required
         />
+        <div class="age-container">
+          <input
+            type="number"
+            class="form-input-age"
+            id="ageFrom"
+            name="ageFrom"
+            min="0"
+            max="100"
+            placeholder="Rentang Bawah Usia Peserta"
+          />
+
+          <input
+            type="number"
+            class="form-input-age"
+            id="ageTo"
+            name="ageTo"
+            min="0"
+            max="100"
+            placeholder="Rentang Atas Usia Peserta"
+          />
+        </div>
+
         <input class="form-input" id="date" type="date" name="date" required />
 
         <div class="submit-container">
           <input class="submit-button" type="submit" />
           <div class="order-info-container">
             <div class="wa-cs-container">
-              <img src="img/whatsapp-line.png" class="whatsapp-logo" />
-              <a
-                href="https://wa.me/628502733802"
-                target="_blank"
-                class="whatsapp-link"
-                >Hubungi Admin Kami</a
-              >
+              <a href="https://wa.me/628502733802" target="_blank">
+                <img src="img/whatsapp-line.png" class="whatsapp-logo" />
+              </a>
             </div>
             <div class="jadwal-info-container">
               <img src="img/arrow-down-line.png" class="arrow-down-logo" />

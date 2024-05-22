@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var instansi = document.getElementById("instansi").value;
     var jumlah = document.getElementById("jumlah").value;
     var nomorwa = document.getElementById("nomorwa").value;
-
+    var min_umur = document.getElementById("ageFrom").value;
+    var max_umur = document.getElementById("ageTo").value;
     var selectedDate = new Date(date);
     var today = new Date();
 
@@ -72,6 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (Number(min_umur) > Number(max_umur)) {
+      e.preventDefault();
+      alert("Umur minimum tidak boleh lebih besar dari umur maksimum.");
+      return;
+    }
     let eventsOnSelectedDate = calendar
       .getEvents()
       .filter((event) => event.startStr === date);
@@ -80,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (total, event) => total + Number(event.extendedProps.jumlah),
       0
     );
-    console.log("jumlah peserta hari itu " + totalJumlahOnSelectedDate);
+    // console.log("jumlah peserta hari itu " + totalJumlahOnSelectedDate);
     let eventsama = calendar.getEvents();
     var cekeventsama = eventsama.find(function (event) {
       let namainstansisubmit = name.toLowerCase() + instansi.toLowerCase();
@@ -105,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
         instansi: instansi,
         jumlah: jumlah,
         nomorwa: nomorwa,
+        min_umur: min_umur,
+        max_umur: max_umur,
       };
       $.ajax({
         url: "db_insert.php",
@@ -121,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("instansi").value = "";
           document.getElementById("jumlah").value = "";
           document.getElementById("nomorwa").value = "";
+          document.getElementById("ageFrom").value = "";
+          document.getElementById("ageTo").value = "";
         },
       });
       //sendgrid

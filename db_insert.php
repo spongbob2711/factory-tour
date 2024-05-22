@@ -16,10 +16,12 @@ $date = $_POST['date'];
 $instansi = $_POST['instansi'];
 $jumlah = $_POST['jumlah'];
 $nomorwa = $_POST['nomorwa'];
+$umur_minimum = $_POST['min_umur'];
+$umur_maksimal = $_POST['max_umur'];
 // $nomorwa = str_replace(' ', '', $_POST['nomorwa']); // Remove spaces from the phone number
 
-$stmt = $conn->prepare("INSERT INTO `event` (`no`, `name`, `email`,`date`, `instansi`,`jumlah`,`nomorwa`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssss", $no, $name, $email, $date, $instansi, $jumlah, $nomorwa);
+$stmt = $conn->prepare("INSERT INTO `event` (`no`, `name`, `email`,`date`, `instansi`,`jumlah`,`nomorwa`,`umur_minimum`,`umur_maksimal`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssssss", $no, $name, $email, $date, $instansi, $jumlah, $nomorwa, $umur_minimum, $umur_maksimal);
 
 $no = '';
 

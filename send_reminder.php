@@ -29,7 +29,7 @@ foreach ($events as $event) {
             "Hallo,<br><br>Halo Bapak/Ibu $name dari instansi $instansi. Kami mengingatkan Anda telah melakukan pemesanan pada tanggal $date dengan jumlah peserta $jumlah orang.<br><br>Terima Kasih atas pemesanannya,<br>Marimas Company"
         );
         $reminderEmail->setSendAt(strtotime($reminderDate));
-
+        $sendgrid = new \SendGrid(SENDGRID_API_KEY);
         $response = $sendgrid->send($reminderEmail);
     }
 }
