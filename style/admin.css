@@ -142,3 +142,15 @@ html {
 .form-container input[type="submit"]:hover {
   background-color: #45a049;
 }
+/*date_table.php*/
+#content {
+  margin-bottom: 20vh;
+}
+#monthSelect {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: var(--ff-bold);
+
+  color: black;
+  background-color: #f8f8f8;
+}

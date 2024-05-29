@@ -23,6 +23,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="web-title">Marimas Factory Tour</div>
       </div>
       <div class="right-section">
+      <a href="date_table.php" class="navbar-home" style="text-decoration: none;">List <br>Acara</a>
         <a href="delete_event.php" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
         <a href="#" class="navbar-order" style="text-decoration: none;">Ubah <br>Tanggal</a>
         <a href="export_event.php" class="navbar-order" style="text-decoration: none;">Export <br>Acara</a>

@@ -31,6 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="right-section">
         <!-- <div class="navbar-right">Home</div>
         <div class="navbar-right">Order</div> -->
+        <a href="date_table.php" class="navbar-home" style="text-decoration: none;">List <br>Acara</a>
         <a href="#" class="navbar-home" style="text-decoration: none;">Hapus <br>Acara</a>
         <a href="change_date.php" class="navbar-order" style="text-decoration: none;">Ubah <br>Tanggal</a>
         <a href="export_event.php" class="navbar-order" style="text-decoration: none;">Export <br>Acara</a>
