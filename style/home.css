@@ -720,3 +720,19 @@ iframe {
     color: black;
   }
 }
+@media (max-width: 480px) {
+  .left-section {
+    flex: 1;
+  }
+  .right-section {
+    flex: 1;
+  }
+  .web-title {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .banner-3-text {
+    font-size: 0.7rem;
+  }
+}
